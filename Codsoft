@@ -1,0 +1,31 @@
+# Simple Contact Book
+
+contacts = {}
+
+while True:
+    choice = input("\n1. Add Contact\n2. View Contacts\n3. Search Contact\n4. Exit\nChoose an option: ")
+
+    if choice == '1':
+        name = input("Enter name: ")
+        phone = input("Enter phone number: ")
+        contacts[name] = phone
+        print(f"Contact {name} added.")
+
+    elif choice == '2':
+        print("\nContacts:")
+        for name, phone in contacts.items():
+            print(f"{name}: {phone}")
+
+    elif choice == '3':
+        search = input("Enter name to search: ")
+        if search in contacts:
+            print(f"Found: {search}: {contacts[search]}")
+        else:
+            print("Contact not found.")
+
+    elif choice == '4':
+        print("Exiting the Contact Book.")
+        break
+
+    else:
+        print("Invalid choice!")
