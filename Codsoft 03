@@ -1,0 +1,19 @@
+# Short To-Do List
+
+todo_list = []
+
+while True:
+    action = input("\nChoose: 1-View, 2-Add, 3-Remove, 4-Exit: ")
+
+    if action == '1':
+        print("\nYour tasks:", todo_list if todo_list else "No tasks.")
+    elif action == '2':
+        todo_list.append(input("Enter a new task: "))
+    elif action == '3':
+        task_num = int(input("Task number to remove: ")) - 1
+        if 0 <= task_num < len(todo_list):
+            todo_list.pop(task_num)
+    elif action == '4':
+        break
+    else:
+        print("Invalid choice!")
