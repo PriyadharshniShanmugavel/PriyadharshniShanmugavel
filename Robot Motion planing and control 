@@ -1,0 +1,89 @@
+int enabler = 5; // Right Motor enable pin
+int RightMotorForward = 6;
+int RightMotorReverse = 7;
+
+int enablel = 8; // Left Motor enable pin
+int LeftMotorForward = 9;
+int LeftMotorReverse = 10;
+
+// Function to stop the robot
+void RobotStop() {
+  digitalWrite(RightMotorForward, LOW);
+  digitalWrite(RightMotorReverse, LOW);
+  digitalWrite(LeftMotorForward, LOW);
+  digitalWrite(LeftMotorReverse, LOW);
+}
+
+// Function for moving forward
+void Forward() {
+  digitalWrite(RightMotorForward, HIGH);
+  digitalWrite(RightMotorReverse, LOW);
+  digitalWrite(LeftMotorForward, HIGH);
+  digitalWrite(LeftMotorReverse, LOW);
+}
+
+// Function for moving reverse
+void Reverse() {
+  digitalWrite(RightMotorForward, LOW);
+  digitalWrite(RightMotorReverse, HIGH);
+  digitalWrite(LeftMotorForward, LOW);
+  digitalWrite(LeftMotorReverse, HIGH);
+}
+
+// Function for turning right
+void Right() {
+  digitalWrite(RightMotorForward, LOW);
+  digitalWrite(RightMotorReverse, LOW);
+  digitalWrite(LeftMotorForward, HIGH);
+  digitalWrite(LeftMotorReverse, LOW);
+}
+
+// Function for turning left
+void Left() {
+  digitalWrite(LeftMotorForward, LOW);
+  digitalWrite(LeftMotorReverse, LOW);
+  digitalWrite(RightMotorForward, HIGH);
+  digitalWrite(RightMotorReverse, LOW);
+}
+
+// Function for spinning
+void Spin() {
+  digitalWrite(LeftMotorForward, LOW);
+  digitalWrite(LeftMotorReverse, HIGH);
+  digitalWrite(RightMotorForward, HIGH);
+  digitalWrite(RightMotorReverse, LOW);
+}
+
+void setup() {
+  // Configuring pins
+  pinMode(enabler, OUTPUT);
+  pinMode(enablel, OUTPUT);
+  pinMode(RightMotorForward, OUTPUT);
+  pinMode(RightMotorReverse, OUTPUT);
+  pinMode(LeftMotorForward, OUTPUT);
+  pinMode(LeftMotorReverse, OUTPUT);
+
+  // Enable motors
+  analogWrite(enabler, 255); // Maximum speed for Right Motor
+  analogWrite(enablel, 255); // Maximum speed for Left Motor
+}
+
+void loop() {
+  Forward();
+  delay(1000);
+
+  Reverse();
+  delay(1000);
+
+  Right();
+  delay(500);
+
+  Left();
+  delay(500);
+
+  Spin();
+  delay(1000);
+
+  RobotStop();
+  delay(1000);
+}
